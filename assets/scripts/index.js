@@ -1,7 +1,7 @@
 const listTweets = document.getElementById('List-twets');
 
 eventlisteners();
-
+//lack ensure that the text input area is 58 characters
 function eventlisteners(){
   const formTweet = document.querySelector('#Form');
   formTweet.addEventListener('submit', addTweet);
@@ -9,12 +9,13 @@ function eventlisteners(){
   listTweets.addEventListener('click', deleteTweet);
 
   document.addEventListener('DOMContentLoaded', localStorageReady);
- 
+
 }
 
 function addTweet(e){
     e.preventDefault();
     const tweet = document.getElementById('tweet').value;
+    const formTweet = document.querySelector('#Form');
     
     const buttonDelete = document.createElement('a')
     buttonDelete.classList = 'delete-tweet';
@@ -27,6 +28,7 @@ function addTweet(e){
     listTweets.appendChild(li);  
 
     addTweetToLocalStorage(tweet);
+    formTweet.reset();
 }
 
 function deleteTweet(e){
